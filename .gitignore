@@ -1,0 +1,5 @@
+tmp/*
+dist/*
+out/*
+node_modules/*
+.vite/*

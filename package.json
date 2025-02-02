@@ -1,0 +1,23 @@
+{
+  "name": "celestial-body-sim",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "compile": "tsc",
+    "dev": "tsc && vite --port 4000",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist/ && rm -rf out/",
+    "clean-full": "npm run clean && rm -rf node_modules/"
+  },
+  "author": "Kagof",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.173.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.172.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.11"
+  }
+}

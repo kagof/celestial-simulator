@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Celestial Body System Simulator</title>
+        <link rel="stylesheet" href="static/styles.css">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <script src="./src/index.ts" type="module"></script>
+        <script>
+            let FF_FOUC_FIX;
+          </script>
+    </head>
+    <body style="background-color: var(--ctp-mocha-base)">
+        <h1>Celestial Body Simulator</h1>
+        <div id="webgl-warning" hidden>
+            Your browser does not support WebGL.<br/>
+        </div>
+        <div id="foo">
+            <p>
+                <button id="start-button" disabled>Start</button><span class="spinner" id="spinner"></span>
+            </p>
+            <details open>
+                <summary>Settings</summary>
+                    <br/>
+                    <math><mn>G</mn><mo>=</mo></math> <input type="number" id="G" value="0.00005" step="0.000001" min="0" max="0.001" /><br/>
+
+            </details>
+            <br/>
+            <canvas id="canvas" height="600" width="800"></canvas>
+            <div class="error" id="error" hidden></div>
+        </div>
+        <div>
+            <h2>About</h2>
+            <p>
+                This is a Newtonian gravitational simulator written using Three.js. The bodies orbit using the following formula:
+                <math display="block">
+                    <mrow>
+                        <msub>
+                            <mi>m</mi>
+                            <mi>i</mi>
+                        </msub>
+                        <mfrac>
+                            <mrow>
+                                <msup>
+                                    <mi>d</mi>
+                                    <mn>2</mn>
+                                </msup>
+                                <msub>
+                                    <mi><b>q</b></mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                            <mrow>
+                                <mi>d</mi>
+                                <msup>
+                                    <mi>t</mi>
+                                    <mn>2</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                        <mo>=</mo>
+                        <munderover>
+                            <mo>&sum;</mo>
+                            <mrow>
+                                <mi>j</mi>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                                <mo>,</mo>
+                                <mi>j</mi>
+                                <mo>&ne;</mo>
+                                <mi>i</mi>
+                            </mrow>
+                            <mrow>
+                                <mi>n</mi>
+                                <mo>-</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </munderover>
+                        <mfrac>
+                            <mrow>
+                                <mn>G</mn>
+                                <msub>
+                                    <mi>m</mi>
+                                    <mi>i</mi>
+                                </msub>
+                                <msub>
+                                    <mi>m</mi>
+                                    <mi>j</mi>
+                                </msub>
+                                <mo>(</mo>
+                                <msub>
+                                    <mi><b>q</b></mi>
+                                    <mi>j</mi>
+                                </msub>
+                                <mo>-</mo>
+                                <msub>
+                                    <mi><b>q</b></mi>
+                                    <mi>i</mi>
+                                </msub>
+                                <mo>)</mo>
+                            </mrow>
+                            <mrow>
+                                <mo>||</mo>
+                                <msub>
+                                    <mi><b>q</b></mi>
+                                    <mi>j</mi>
+                                </msub>
+                                <mo>-</mo>
+                                <msub>
+                                    <mi><b>q</b></mi>
+                                    <mi>i</mi>
+                                </msub>
+                                <msup>
+                                    <mo>||</mo>
+                                    <mn>3</mn>
+                                </msup>
+                            </mrow>
+                        </mfrac>
+                    </mrow>
+                </math>
+                where:
+                <ul>
+                    <li><math><msub><mi>m</mi><mi>k</mi></msub></math> is the mass of body <math><mi>k</mi></math></li>
+                    <li><math><msub><mi><b>q</b></mi><mi>k</mi></msub></math> is the position of body  <math><mi>k</mi></math></li>
+                    <li><math><mn>G</mn></math> is the gravitational constant</li>
+                    <li><math><mo>||</mo><msub><mi><b>q</b></mi><mi>l</mi></msub><mo>-</mo><msub><mi><b>q</b></mi><mi>k</mi></msub><mo>||</mo></math> is the magnitude of the Euclidean distance between bodies <math><mi>k</mi></math> and <math><mi>l</mi></math></li>
+                </ul>
+            </p>
+            <p>
+                The simulation often behaves differently between runs. My assumption is that this is due to miniscule differences in timing. An <math><mi>n</mi></math>-body system is inherrently chaotic, meaning that small changes to input parameters can cause huge changes in overall behaviour, so these small difference in timing may have a large effect.
+            </p>
+            <p>
+                You can see the source code hosted on <a href="https://github.com/kagof/celestial-simulator">Github</a>, as well as planned features.
+            </p>
+        </div>
+        <br/>
+    </body>
+    <footer>
+        <p>Copyright 2025 Kagof under the <a href="LICENSE.txt">MIT license</a></p>
+        <p>
+            last modified <script>document.write( new Date(document.lastModified).toISOString().substring(0, 10) );</script>
+        </p>
+        <p>
+            <details>
+            <summary>Credits</summary>
+                3D library: <a href="https://github.com/mrdoob/three.js/">Three.JS</a><br/>
+                CSS colors: <a href="https://github.com/catppuccin/palette/blob/main/docs/css.md">Catppuccin</a><br/>
+                Bundling & local devserver: <a href="https://vite.dev/">Vite</a><br/>
+                Moon texture & map: <a href="https://svs.gsfc.nasa.gov/4720">NASA's Scientific Visualization Studio</a>
+          </details>
+        </p>
+    </footer>
+</html>
