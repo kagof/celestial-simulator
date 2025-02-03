@@ -37,98 +37,14 @@ The simulation is created in a basic static HTML webpage. The simulation is writ
 
 The simulator calculations changes in acceleration using [the general equation for Newtonian gravity](https://en.wikipedia.org/wiki/N-body_problem):
 
-<math display="block">
-    <mrow>
-        <msub>
-            <mi>m</mi>
-            <mi>i</mi>
-        </msub>
-        <mfrac>
-            <mrow>
-                <msup>
-                    <mi>d</mi>
-                    <mn>2</mn>
-                </msup>
-                <msub>
-                    <mi><b>q</b></mi>
-                    <mi>i</mi>
-                </msub>
-            </mrow>
-            <mrow>
-                <mi>d</mi>
-                <msup>
-                    <mi>t</mi>
-                    <mn>2</mn>
-                </msup>
-            </mrow>
-        </mfrac>
-        <mo>=</mo>
-        <munderover>
-            <mo>&sum;</mo>
-            <mrow>
-                <mi>j</mi>
-                <mo>=</mo>
-                <mn>0</mn>
-                <mo>,</mo>
-                <mi>j</mi>
-                <mo>&ne;</mo>
-                <mi>i</mi>
-            </mrow>
-            <mrow>
-                <mi>n</mi>
-                <mo>-</mo>
-                <mn>1</mn>
-            </mrow>
-        </munderover>
-        <mfrac>
-            <mrow>
-                <mn>G</mn>
-                <msub>
-                    <mi>m</mi>
-                    <mi>i</mi>
-                </msub>
-                <msub>
-                    <mi>m</mi>
-                    <mi>j</mi>
-                </msub>
-                <mo>(</mo>
-                <msub>
-                    <mi><b>q</b></mi>
-                    <mi>j</mi>
-                </msub>
-                <mo>-</mo>
-                <msub>
-                    <mi><b>q</b></mi>
-                    <mi>i</mi>
-                </msub>
-                <mo>)</mo>
-            </mrow>
-            <mrow>
-                <mo>||</mo>
-                <msub>
-                    <mi><b>q</b></mi>
-                    <mi>j</mi>
-                </msub>
-                <mo>-</mo>
-                <msub>
-                    <mi><b>q</b></mi>
-                    <mi>i</mi>
-                </msub>
-                <msup>
-                    <mo>||</mo>
-                    <mn>3</mn>
-                </msup>
-            </mrow>
-        </mfrac>
-    </mrow>
-</math>
+```math
+m_i\frac{d^2\mathbf{q}_i}{dt^2}=\sum_{j=0,j\neq i}^{n-1}{\frac{Gm_im_j(\mathbf{q}_j-\mathbf{q}_i)}{\|\mathbf{q}_j-\mathbf{q}_i\|^3}}
+```
 
-where 
-
-* <math><msub><mi>m</mi><mi>k</mi></msub></math> is the mass of body <math><mi>k</mi></math>
-* <math><msub><mi><b>q</b></mi><mi>k</mi></msub></math> is the position of body  <math><mi>k</mi></math>
-* <math><mn>G</mn></math> is the gravitational constant
-* <math><mo>||</mo><msub><mi><b>q</b></mi><mi>l</mi></msub><mo>-</mo><msub><mi><b>q</b></mi><mi>k</mi></msub><mo>||</mo></math> is the magnitude of the Euclidean distance between bodies <math><mi>k</mi></math> and <math><mi>l</mi></math>
+* $m_k$ is the mass of body $k$
+* $\mathbf{q}_k$ is the position of body $k$
+* $G$ is the gravitational constant
+* $\lVert\mathbf{q}_l-\mathbf{q}_k\rVert$ is the magnitude of the Euclidean distance between bodies $k$ and $l$
 
 ## Features
 
